@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Hitung Bidang</string>
+    <string name="txt_length_id">Panjang</string>
+    <string name="txt_width_id">Lebar</string>
+    <string name="txt_height_id">Tinggi</string>
+    <string name="txt_btn_hitung">HITUNG</string>
+</resources>
