@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:padding="10dp"
+    android:orientation="vertical">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_phi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="phi = 22/7"
+                android:textSize="@dimen/inp_label_length"
+                android:textAlignment="center"
+                android:layout_margin="10dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/tv_width"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_width_id"
+                android:textSize="10sp"
+                android:layout_marginTop="2dp"/>
+
+            <EditText
+                android:id="@+id/edt_width"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:inputType="numberDecimal"/>
+
+            <TextView
+                android:id="@+id/tv_height"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_height_id"
+                android:textSize="10sp"
+                android:layout_marginTop="5dp"/>
+
+            <EditText
+                android:id="@+id/edt_height"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:lines="1" />
+
+            <Button
+                android:id="@+id/btn_hitung"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_btn_hitung"
+                android:textSize="@dimen/btn_hitung"
+                android:padding="20dp"
+                android:layout_marginTop="2.5dp"/>
+
+            <TextView
+                android:id="@+id/tv_hasil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="HASIL"
+                android:textSize="@dimen/txt_inp_hasil"
+                android:textAlignment="center"
+                android:padding="20dp"
+                android:background="@drawable/bg_hasil_white2"
+                android:layout_marginTop="5dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

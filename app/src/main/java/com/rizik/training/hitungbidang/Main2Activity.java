@@ -1,21 +1,17 @@
 package com.rizik.training.hitungbidang;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class Main2Activity extends AppCompatActivity {
 
     private EditText edtPanjang, edtLebar, edtTinggi;
     private Button btnHitung;
@@ -26,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main2);
 
         //Kenalkan component ke main_activity
         edtPanjang = (EditText) findViewById(R.id.edt_length);
@@ -35,86 +31,60 @@ public class MainActivity extends AppCompatActivity {
         btnHitung = (Button) findViewById(R.id.btn_hitung);
         tvHasil = (TextView) findViewById(R.id.tv_hasil);
 
-        if (savedInstanceState != null) {
-            volume = savedInstanceState.getDouble(STATE_HASIL);
-            Log.i("V:",String.valueOf(volume));
-            tvHasil.setText(String.valueOf(volume));
-        }
-
-        getSupportActionBar().setTitle("Volume Prisma Segitiga");
+        getSupportActionBar().setTitle("Volume Balok");
         //berikan action button hitung untuk menghitung hasil
         btnHitung.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String panjang, lebar, tinggi;
-                panjang = edtPanjang.getText().toString().trim();
-                lebar = edtLebar.getText().toString().trim();
-                tinggi = edtTinggi.getText().toString().trim();
+                panjang = edtPanjang.getText().toString();
+                lebar = edtLebar.getText().toString();
+                tinggi = edtTinggi.getText().toString();
+
                 boolean isEmptyInput = false;
-                boolean isValidDouble = true;
+
                 if (TextUtils.isEmpty(panjang)){
                     edtPanjang.setError("Harus diisi");
                     edtPanjang.requestFocus();
                     isEmptyInput = true;
                 }
-
                 if (TextUtils.isEmpty(lebar)){
                     edtLebar.setError("Harus diisi");
                     edtLebar.requestFocus();
                     isEmptyInput = true;
                 }
-
                 if (TextUtils.isEmpty(tinggi)) {
                     edtTinggi.setError("Harus diisi");
                     edtTinggi.requestFocus();
                     isEmptyInput = true;
                 }
+
                     //masukkan rumus
-                    Double p = convertToDouble(panjang); // null adalah invalid Double
-                    Double l = convertToDouble(lebar);
-                    Double t = convertToDouble(tinggi);
+                    double p = Double.parseDouble(panjang);
+                    double l = Double.parseDouble(lebar);
+                    double t = Double.parseDouble(tinggi);
+                    volume = p*l*t;
+                    //kemudian hasil ditampilkan di Text View
+                    tvHasil.setText(String.valueOf(volume));
 
-                    if(p == null){
-                        isValidDouble = false;
-                    }
-
-                    if(l == null){
-                        isValidDouble = false;
-                    }
-
-                    if(t == null){
-                        isValidDouble =false;
-                    }
-                    if(!isEmptyInput && isValidDouble) {
-                        volume = (p * l * t) / 2;
-                        //kemudian hasil ditampilkan di Text View
-                        tvHasil.setText(String.valueOf(volume));
-                    }
-                }
-            });
+            }
+        });
+        if (savedInstanceState != null){
+            volume = savedInstanceState.getDouble(STATE_HASIL);
+            tvHasil.setText(String.valueOf(volume));
         }
-
+    }
 
     @Override
-    protected void onSaveInstanceState(@NonNull Bundle outState) {
+    protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putDouble(STATE_HASIL, volume);
+        outState.putDouble(STATE_HASIL,volume);
     }
 
-    private Double convertToDouble(String data){
-        try{
-            Double newData = Double.valueOf(data);
-            return newData;
-        }
-        catch (Exception e){
-            return null;
-        }
-    }
-
-    //untuk klik kembali di bar supaya keterangan nama tidak hilang
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home){
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        if(item.getItemId() == android.R.id.home){
             onBackPressed();
             return true;
         }
@@ -122,5 +92,3 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 }
-
-

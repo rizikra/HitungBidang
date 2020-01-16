@@ -5,4 +5,7 @@
     <dimen name="inp_label_height">20sp</dimen>
     <dimen name="btn_hitung">20sp</dimen>
     <dimen name="txt_inp_hasil">20sp</dimen>
+    <dimen name="inp_label_nama">20sp</dimen>
+    <dimen name="inp_label_name">50sp</dimen>
+    <dimen name="btn_next">20sp</dimen>
 </resources>

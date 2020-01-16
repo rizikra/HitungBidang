@@ -1,7 +1,12 @@
 <resources>
-    <string name="app_name">Hitung Bidang</string>
+    <string name="app_name"> Aplikasi Hitung Volume</string>
     <string name="txt_length_id">Panjang</string>
     <string name="txt_width_id">Lebar</string>
     <string name="txt_height_id">Tinggi</string>
     <string name="txt_btn_hitung">HITUNG</string>
+    <string name="btn_volume_prisma">VOLUME PRISMA</string>
+    <string name="btn_volume_balok">VOLUME BALOK</string>
+    <string name="txt_nama_id">Nama :</string>
+    <string name="btn_next_en">NEXT</string>
+    <string name="txt_jari2_id">Jari - Jari (r)</string>
 </resources>
