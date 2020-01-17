@@ -8,4 +8,6 @@
     <dimen name="inp_label_nama">20sp</dimen>
     <dimen name="inp_label_name">50sp</dimen>
     <dimen name="btn_next">20sp</dimen>
+    <dimen name="btn_contact">20sp</dimen>
+    <dimen name="btn_web">20sp</dimen>
 </resources>

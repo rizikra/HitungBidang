@@ -32,4 +32,37 @@
         android:padding="20dp"
         android:layout_marginTop="5dp"/>
 
+    <Button
+        android:id="@+id/btn_vlm_tabung"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_volume_tabung"
+        android:textSize="@dimen/btn_hitung"
+        android:padding="20dp"
+        android:layout_marginTop="5dp"/>
+
+    <Button
+        android:id="@+id/btn_contact_us"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_contact_us"
+        android:textSize="@dimen/btn_contact"
+        android:padding="10dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/bg_inform"/>
+
+    <Button
+        android:id="@+id/btn_web"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_web"
+        android:textSize="@dimen/btn_web"
+        android:padding="10dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/bg_inform"/>
+
 </LinearLayout>

@@ -26,15 +26,15 @@
                 android:textStyle="bold"/>
 
             <TextView
-                android:id="@+id/tv_width"
+                android:id="@+id/tv_jari"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/txt_width_id"
-                android:textSize="10sp"
-                android:layout_marginTop="2dp"/>
+                android:text="@string/txt_jari2_id"
+                android:textSize="@dimen/inp_label_width"
+                android:layout_marginTop="5dp"/>
 
             <EditText
-                android:id="@+id/edt_width"
+                android:id="@+id/edt_jari"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:lines="1"

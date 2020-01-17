@@ -13,44 +13,38 @@ import android.widget.TextView;
 
 public class Main3Activity extends AppCompatActivity {
 
-    private EditText edtPanjang, edtLebar, edtTinggi;
+    private EditText edtJari2, edtTinggi;
     private Button btnHitung;
     private TextView tvHasil;
     double volume;
-    private final String STATE_HASIL = "state_hasil";
+    double phi = 3.14285714286;
+    private final String STATE_RESULT = "state_result";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_main3);
 
         //Kenalkan component ke main_activity
-        edtPanjang = (EditText) findViewById(R.id.edt_length);
-        edtLebar = (EditText) findViewById(R.id.edt_width);
+        edtJari2 = (EditText) findViewById(R.id.edt_jari);
         edtTinggi = (EditText) findViewById(R.id.edt_height);
         btnHitung = (Button) findViewById(R.id.btn_hitung);
         tvHasil = (TextView) findViewById(R.id.tv_hasil);
 
-        getSupportActionBar().setTitle("Volume Balok");
+        getSupportActionBar().setTitle("Volume Tabung");
         //berikan action button hitung untuk menghitung hasil
         btnHitung.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String panjang, lebar, tinggi;
-                panjang = edtPanjang.getText().toString();
-                lebar = edtLebar.getText().toString();
+                String jari2, tinggi;
+                jari2 = edtJari2.getText().toString();
                 tinggi = edtTinggi.getText().toString();
 
                 boolean isEmptyInput = false;
 
-                if (TextUtils.isEmpty(panjang)){
-                    edtPanjang.setError("Harus diisi");
-                    edtPanjang.requestFocus();
-                    isEmptyInput = true;
-                }
-                if (TextUtils.isEmpty(lebar)){
-                    edtLebar.setError("Harus diisi");
-                    edtLebar.requestFocus();
+                if (TextUtils.isEmpty(jari2)){
+                    edtJari2.setError("Harus diisi");
+                    edtJari2.requestFocus();
                     isEmptyInput = true;
                 }
                 if (TextUtils.isEmpty(tinggi)) {
@@ -59,18 +53,19 @@ public class Main3Activity extends AppCompatActivity {
                     isEmptyInput = true;
                 }
 
-                //masukkan rumus
-                double p = Double.parseDouble(panjang);
-                double l = Double.parseDouble(lebar);
-                double t = Double.parseDouble(tinggi);
-                volume = p*l*t;
-                //kemudian hasil ditampilkan di Text View
-                tvHasil.setText(String.valueOf(volume));
-
+                if(!isEmptyInput) {
+                    //masukkan rumus
+                    phi = 3.14285714286;
+                    double r = Double.parseDouble(jari2);
+                    double t = Double.parseDouble(tinggi);
+                    volume = phi*r*r*t;
+                    //kemudian hasil ditampilkan di Text View
+                    tvHasil.setText(String.valueOf(volume));
+                }
             }
         });
         if (savedInstanceState != null){
-            volume = savedInstanceState.getDouble(STATE_HASIL);
+            volume = savedInstanceState.getDouble(STATE_RESULT);
             tvHasil.setText(String.valueOf(volume));
         }
     }
@@ -78,7 +73,7 @@ public class Main3Activity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putDouble(STATE_HASIL,volume);
+        outState.putDouble(STATE_RESULT,volume);
     }
 
     @Override

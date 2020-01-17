@@ -58,7 +58,7 @@ public class Main2Activity extends AppCompatActivity {
                     edtTinggi.requestFocus();
                     isEmptyInput = true;
                 }
-
+                if(!isEmptyInput) {
                     //masukkan rumus
                     double p = Double.parseDouble(panjang);
                     double l = Double.parseDouble(lebar);
@@ -66,7 +66,7 @@ public class Main2Activity extends AppCompatActivity {
                     volume = p*l*t;
                     //kemudian hasil ditampilkan di Text View
                     tvHasil.setText(String.valueOf(volume));
-
+                }
             }
         });
         if (savedInstanceState != null){
