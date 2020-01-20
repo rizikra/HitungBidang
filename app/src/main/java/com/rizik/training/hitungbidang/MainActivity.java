@@ -1,11 +1,9 @@
 package com.rizik.training.hitungbidang;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Dialog;
-import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -17,11 +15,30 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+
     private EditText edtPanjang, edtLebar, edtTinggi;
     private Button btnHitung;
     private TextView tvHasil;
-    double volume;
     private final String STATE_HASIL = "state_hasil";
+    private final String SH_SIMPAN = "sh_simpan";
+    final String LENGHT = "lenght", WIDTH = "width", HEIGHT = "height", VOLUME = "volume";
+
+    double volume;
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        SharedPreferences sp = getSharedPreferences(SH_SIMPAN, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+
+        editor.putString(LENGHT, edtPanjang.getText().toString());
+        editor.putString(WIDTH, edtLebar.getText().toString());
+        editor.putString(HEIGHT, edtTinggi.getText().toString());
+        editor.putString(VOLUME, tvHasil.getText().toString());
+
+        editor.commit();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +51,12 @@ public class MainActivity extends AppCompatActivity {
         edtTinggi = (EditText) findViewById(R.id.edt_height);
         btnHitung = (Button) findViewById(R.id.btn_hitung);
         tvHasil = (TextView) findViewById(R.id.tv_hasil);
+
+        SharedPreferences sh = getSharedPreferences(SH_SIMPAN, MODE_PRIVATE);
+        edtPanjang.setText(sh.getString(LENGHT, null));
+        edtLebar.setText(sh.getString(WIDTH, null));
+        edtTinggi.setText(sh.getString(HEIGHT, null));
+        tvHasil.setText(sh.getString(VOLUME, null));
 
         if (savedInstanceState != null) {
             volume = savedInstanceState.getDouble(STATE_HASIL);
@@ -92,8 +115,8 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             });
-        }
 
+        }
 
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
